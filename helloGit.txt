@@ -3,3 +3,8 @@ hello World
 my name is liadlee
 my email is liadlee@qq.com
 thank you!
+git status
+git remote -v 查看远程库
+git add
+git commit -m descri
+git push gitee/github master
