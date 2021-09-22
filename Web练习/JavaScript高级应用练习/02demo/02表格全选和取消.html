@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格渐变背景</title>
+    <style>
+        .tableTest {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            vertical-align: center;
+            background: #efefef;
+        }
+
+        .trColor {
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="tableTest" border="1" cellspacing="0">
+        <thead>
+            <th><input type="checkbox" name="checkall" id="checkall">全选/取消</th>
+            <th colspan="5">示例表格</th>
+        </thead>
+        <tbody class="tbody">
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example01</td>
+                <td>张三</td>
+                <td>男</td>
+                <td>18</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example02</td>
+                <td>李四</td>
+                <td>男</td>
+                <td>21</td>
+                <td>9000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example03</td>
+                <td>小舞</td>
+                <td>女</td>
+                <td>19</td>
+                <td>15000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example04</td>
+                <td>唐三</td>
+                <td>男</td>
+                <td>28</td>
+                <td>18000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example05</td>
+                <td>赵四</td>
+                <td>男</td>
+                <td>58</td>
+                <td>3800</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+<script>
+    // 表格背景色变化
+    let trs = document.querySelector('.tbody').querySelectorAll('tr')
+    //console.log(trs)
+    for (let i = 0; i < trs.length; i++) {
+        trs[i].onmouseover = function () {
+            this.className = "trColor"
+        }
+        trs[i].onmouseout = function () {
+            this.className = " "
+        }
+    }
+    //全选操作
+    let theadcheck = document.querySelector('thead').querySelector('th').querySelector('input');
+    theadcheck.onclick = function () {
+        for (let i = 0; i < trs.length; i++) {
+            trs[i].querySelector('td').querySelector('input').checked = this.checked; //this指向触发事件的对象-全选按钮，this.checked为按钮选中状态的布尔值
+        }
+        //console.log(theadcheck.checked);
+    }
+    // 取消选中后的全选按钮的同步操作
+
+    // 遍历给每行选择按钮注册事件
+    for (let i = 0; i < trs.length; i++) {
+        trs[i].onclick = function () {
+            var flag = true //标志位
+            //事件处理过程，每次点击后循环查看每行的选中状态 ---判断修改标志位的值
+            for (let i = 0; i < trs.length; i++) {
+                if (trs[i].querySelector('input').checked == false) {
+                    flag = false;
+                    break;
+                }              
+            }
+            theadcheck.checked = flag;
+        }
+    }
+</script>
+
+</html>

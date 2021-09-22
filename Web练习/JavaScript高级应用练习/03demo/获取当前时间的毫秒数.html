@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<!-- <script>
+    // +new Date ()**相当于调用 Date.prototype.valueOf ()方法，返回的是当下的时间距离1970年1月1日0时0分0秒的毫秒数
+    let d1 = +new Date(); //1630316745222
+    let d2 = new Date(); //Mon Aug 30 2021 17:46:28 GMT+0800 (中国标准时间)
+    console.log(typeof d1 +':'+ d1 )
+    console.log(typeof d1 +':'+ d2)
+   
+</script> -->
+<script>
+    //new Date().valueOf()
+    let d1= new Date().valueOf();
+    console.log(d1)    //1630318883445
+
+    // new Date().getTime()
+    let d2= new Date().getTime();
+    console.log(d2)     //1630318883445
+
+    //Date.parse(new Date())
+    let d3 = Date.parse(new Date());
+    console.log(d3)     //1630318883000
+</script>
+
+</html>

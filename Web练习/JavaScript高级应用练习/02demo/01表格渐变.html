@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格渐变背景</title>
+    <style>
+        .tableTest{
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            vertical-align:center;
+            background:#efefef;
+        }
+        .trColor{
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <table class="tableTest" border="1" cellspacing="0">
+        <thead>
+            <th><input type="checkbox" name="checkall" id="checkall">全选/取消</th>
+            <th colspan="5">示例表格</th>
+        </thead>
+        <tbody class="tbody">
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example01</td>
+                <td>张三</td>
+                <td>男</td>
+                <td>18</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example02</td>
+                <td>李四</td>
+                <td>男</td>
+                <td>21</td>
+                <td>9000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example03</td>
+                <td>小舞</td>
+                <td>女</td>
+                <td>19</td>
+                <td>15000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example04</td>
+                <td>唐三</td>
+                <td>男</td>
+                <td>28</td>
+                <td>18000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="checkItem" id="checkItem"></td>
+                <td>example05</td>
+                <td>赵四</td>
+                <td>男</td>
+                <td>58</td>
+                <td>3800</td>
+            </tr>
+        </tbody>
+    </table>
+  
+</body>
+<script>
+    let trs = document.querySelector('.tbody').querySelectorAll('tr')
+    // console.log(typeof trs)
+    // let trss =document.getElementsByTagName('tr')
+    // console.log(typeof trss)
+    for(let i = 0;i<trs.length;i++){
+        trs[i].onmouseover=function(){
+            this.className="trColor"
+        }
+        trs[i].onmouseout=function(){
+            this.className=" "
+        }
+    }
+</script>
+</html>

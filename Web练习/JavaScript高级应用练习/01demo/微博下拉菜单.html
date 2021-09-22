@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博下拉菜单实现_鼠标事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+
+        }
+
+        nav {
+            height: 50px;
+            background: #ccc;
+            color: #fff;
+            width: 400px;
+            margin: 20px auto 0px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul{
+            display: flex;
+
+        }
+
+        .liItem li {
+            text-decoration: none;
+           
+            border: 1px solid beige;
+
+
+        }
+        .liItem{
+            width: 50px;
+            height: 30px;
+            background:pink;
+            margin-right: 20px;
+        }
+        .list{
+            display: none;
+            width: 100px;
+            height: 100px;
+            background:#ccc;
+            position: absolute;
+            top:60px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="liItem"><div class="list"></div></div>
+        <div class="liItem"><div class="list"></div></div>
+        <div class="liItem"><div class="list"></div></div>
+        <div class="liItem"><div class="list"></div></div>
+        <div class="liItem"><div class="list"></div></div>
+        <div class="liItem"><div class="list"></div></div>
+        <div class="liItem"><div class="list"></div></div>
+
+    </nav>
+</body>
+<script>
+    let liItem = document.getElementsByClassName('liItem');
+
+    for(i=0;i<liItem.length;i++){
+        // console.log(liItem[i])
+        liItem[i].onmouseover=function(){
+            let list= this.querySelector('div');
+            list.style.display="block"
+        }
+        liItem[i].onmouseout=function(){
+            let list= this.querySelector('div');
+            list.style.display="none"
+        }
+    }
+</script>
+</html>

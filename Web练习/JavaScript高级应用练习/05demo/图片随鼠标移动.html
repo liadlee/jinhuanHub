@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小天使案例</title>
+    <style>
+        .mymouse {
+            width: 15px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="./mouse.gif" alt="跟随鼠标移动得图片" class="mymouse">
+</body>
+<script>
+    let mouseImg = document.querySelector('.mymouse');
+    document.addEventListener('mousemove',function (e) {
+        mouseImg.style.top = e.pageY +'px';
+        mouseImg.style.left = e.pageX +'px';   
+    })
+</script>
+</html>

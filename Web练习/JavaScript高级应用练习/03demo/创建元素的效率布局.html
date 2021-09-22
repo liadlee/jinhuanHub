@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建元素的效率比较</title>
+</head>
+
+<body>
+    <P>* innerHTML在创建大量元素时效率很高,如第三种情况前提是字符串处理后进行即str+=<div></div>;innerHTML='str'</P>
+    <P>* 当innerHTML进行拼接时,执行效率非常慢,以秒计;如第二种情况</P>
+    <p>* 使用createElement创建元素,appendChild添加时,时间为上一种的十倍</p>
+</body>
+<!--<script>   
+    let d1 = +new Date();
+    for (let i = 0; i < 1000; i++) {
+        var div = document.createElement('div');
+        div.style.width = '100px ';
+        div.style.height = '2px';
+        div.style.border = '1px solid red '; 
+       document.body.appendChild(div);
+    }
+    let d2 = +new Date();
+    console.log(d2-d1);
+    //6ms
+ </script> -->
+<!-- <script>
+        var d1 = +new Date();
+        var str = '';
+        for (var i =0 ; i < 1000; i++) {
+            document.body.innerHTML +='<div style="width:100px; height:2px; border:1px solid blue;"> </div>';
+        }
+        var d2 = +new Date(); 
+        console.log(d2 - d1) //1069ms
+</script> -->
+<script>
+    var d1 = +new Date();
+    var str ='';
+    for (var i =0 ; i < 1000; i++) {
+    str+='<div style="width:100px; height:2px; border:1px solid blue;"> </div>';         
+    }
+    document.body.innerHTML =str;
+    var d2 = +new Date(); 
+    console.log(d2 - d1) //2ms
+</script>
+</html>

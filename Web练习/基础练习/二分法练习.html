@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="con"></p>
+    <script>
+        //         var nums=prompt('请输入数组：');
+        //         var target=prompt('请输入target:')
+        //         searchInsert(nums,target)
+        //         function searchInsert(nums,  target) {
+        //        var left=0;
+        //        var right = nums.length-1;
+        //        var mid=0,i=1;
+        //        while(left<=right){
+        //            mid=(right+left)/2;
+        //            if(target>nums[mid]){
+        //             console.log('第'+i+'次：'+'left= '+left+ 'right= '+right +'mid= '+mid )  ;  
+        //             i++;          
+        //                left=mid+1;
+        //            }else if(target<nums[mid]){
+        //             console.log('第'+i+'次：'+'left= '+left+ 'right= '+right +'mid= '+mid )  ;   
+        //                right = mid - 1;
+        //                i++;      
+        //            }else{
+        //             console.log('第'+i+'次：'+'left= '+left+ 'right= '+right +'mid= '+mid )  ;   
+        //             i++;      
+        //                return mid;
+        //            }
+
+        //        }
+        //        console.log('第'+i+'次：'+'left= '+left+ 'right= '+right +'mid= '+mid )  ;  
+        // return left;
+        //     }
+        var nums=[2,7,11,15];
+        target=9;
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+ var twoSum = function(nums, target) {
+var left=0;
+var right=findRight(nums,target);
+while(left<=right){
+var sum=nums[left]+nums[right];
+if(sum<target){
+    left+=1;
+}else if(sum>target){ 
+    right-=1;
+  }
+  else{
+      var ans=[nums[left],nums[right]];
+      return ans;
+  }
+}
+return false;
+};
+
+//使用二分法寻找双指针上限
+ function findRight(nums,target){
+var start=0;
+var end=nums.length-1;
+var mid
+while(start<end){
+    mid=parseInt(start+(end-start)/2);//确保mid为整数
+    if(nums[mid]>target){
+        end=mid-1;     //求和为s的两个数，而一个数nums[mid]已经比target大，故区间缩小到nums[mid]左侧；
+    }else{
+               
+         start=mid+1;         //注意函数的返回值是start做为双指针的上限（双指针第一次计算应是nums[0]+nums[start]）
+    }                        //小于target的任何一个数均在可能出现结果的区间，nums[mid]<=target,所以start后移，继续寻找临界点
+}   
+return start;
+ }
+
+    </script>
+</body>
+
+</html>

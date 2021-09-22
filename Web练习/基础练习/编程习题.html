@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 冒泡 -->
+    <script>
+        //定义需要排序的数组
+        var arr = [2, 4, 5, 3, 1];
+        //利用冒泡排序将原数组进行升序排列
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    var temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+        }
+        //输出排列后的数组
+        console.log(arr);
+    </script>
+    <!-- 输出星星； -->
+    <!-- <script>
+        //定义最后要输出的★的字符串
+        var str = '';
+        //利用for循环嵌套完成题目要求，提示：内层循环j<=i
+        for (var i = 1; i <= 5; i++) {
+            for(var j=0;j<i;j++){
+                str+='★';
+            }
+            str+='\n';
+        }
+        //输出
+      
+        console.log(str);
+    </script> -->
+
+
+    <!-- 九九乘法表
+        <script>
+        //定义最后输出九九乘法表的字符串
+        var str = '';
+        //利用双层for循环输入题目要求结果，注意使用'\t'
+        for (var i = 1; i <= 9; i++) {
+            for(var j=1;j<=i;j++){
+                str+=String(j)+'x'+String(i)+'='+j*i+'\t';
+            }
+            str = str + '\n';
+        }
+        console.log(str);
+    </script> -->
+
+</body>
+</html>

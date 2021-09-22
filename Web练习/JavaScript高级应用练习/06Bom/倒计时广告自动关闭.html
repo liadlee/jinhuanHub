@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5秒广告关闭</title>
+</head>
+<style>
+    .box {
+        position: relative;
+        width: 300px;
+        height: 500px;
+        background: skyblue;
+        
+    }
+    .btn{
+        position: absolute;
+        right:10px;
+        cursor: pointer;
+    }
+</style>
+<script> 
+var times = 5;
+window.onload=function(){
+let box = document.querySelector('.box');
+let btn = document.querySelector('.btn');
+let text = btn.querySelector('.text');
+// seetInterval有三种写法
+// setInterval(function () {},[间隔毫秒数||0]);
+// setInterval(fun,[间隔毫秒数||0]);
+// setInterval('fun()',[间隔毫秒数||0]);---不推荐
+let timer = setInterval(function(){
+    if(times==0){
+        //清除计时器，间隔秒数执行
+        clearInterval(timer)
+        box.style.display='none';
+       
+    }else{
+        text.innerHTML=--times+'秒后自动关闭'
+    }
+    console.log('ing');
+},1000)
+btn.addEventListener('click',function(){
+    box.style.display='none'
+    clearInterval(timer)
+})
+}
+</script>
+<body>
+    <div class="box">
+        
+        <span class="btn">
+            <span class="text">5秒后自动关闭</span>
+        关闭
+    </span></div>
+</body>
+
+
+</html>

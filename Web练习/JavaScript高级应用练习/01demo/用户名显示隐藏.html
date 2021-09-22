@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户名密码显示隐藏</title>
+    <style>
+        .test{
+            display: flex;
+            height: 30px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="test">
+        <input type="password">
+        <!-- <input type="button" value="显示"> -->
+        <button value="显示">显示</button>
+
+       
+    </div>
+    
+</body>
+<script>
+    let show = document.querySelector('button');
+    let ipt =document.querySelector('input')
+    // console.dir(show);
+    let flag=false;
+    show.onclick = function(){
+        if(!flag){
+            ipt.type='text'
+            this.innerHTML='隐藏';
+            // console.log(ipt);
+            flag=!flag;
+
+        }else{
+
+            ipt.type='passWord';
+            this.innerHTML='显示';
+            flag=!flag;
+        }
+    }
+</script>
+</html>

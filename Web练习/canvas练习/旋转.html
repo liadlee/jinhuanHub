@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas旋转</title>
+    <style>
+        body {
+            /* 失败：display: table-cell;
+            text-align: center;
+            vertical-align:middle; */
+        }
+
+        #test {
+
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="test" width="500" height="500px"></canvas>
+ <!-- 课件写法 -->
+ <!-- <script>
+        var flag = 0;
+        var scale = 0, flagscale = 1;
+        var canvas = document.getElementById("test");
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+
+        }
+        
+        ctx.save()
+        ctx.translate(250, 250)
+        ctx.beginPath();
+        ctx.fillRect(-100, -100, 200, 200)
+       // ctx.fill()
+        ctx.restore();
+        window.setInterval(function () {
+            flag += 1;
+           ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save()
+           ctx.translate(250, 250)
+           ctx.beginPath();
+            ctx.rotate((flag % 360) * Math.PI / 180)      
+            if(scale==100){
+                flagscale=-1;
+            }      
+            else if(scale==0){
+                flagscale=1;
+            }
+            scale+=flagscale;
+            ctx.scale(scale/50,scale/50)//在0和2之间放缩
+            //ctx.fillRect(-100, -100, 200, 200)
+            ctx.rect(-100, -100, 200, 200)
+            ctx.fill()
+            ctx.restore()
+
+
+        }, 100)
+    </script> -->
+
+<!-- //我的理解 -->
+<script>
+    var flag = 0;
+    var scale = 0, flagscale = 1;
+    var canvas = document.getElementById("test");
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+    }
+    //直接把原点位移压入样式栈中
+    ctx.translate(250, 250)
+    ctx.save()
+    
+    ctx.beginPath();
+    ctx.rect(-100, -100, 200, 200)
+   ctx.fill()
+    ctx.restore();
+    window.setInterval(function () {
+        flag += 1;
+       ctx.clearRect(-250, -250, canvas.width, canvas.height);//这个地方的坐标也需要改动
+        ctx.save()
+       //ctx.translate(250, 250)    //由于translate在save前，restore时不会重置位移效果，不用重新执行位移
+       ctx.beginPath();
+        ctx.rotate((flag % 360) * Math.PI / 180)      
+        if(scale==100){
+            flagscale=-1;
+        }      
+        else if(scale==0){
+            flagscale=1;
+        }
+        scale+=flagscale;
+        ctx.scale(scale/50,scale/50)//在0和2之间放缩
+        //ctx.fillRect(-100, -100, 200, 200)
+        ctx.rect(-100, -100, 200, 200)
+        ctx.fill()
+        ctx.restore()
+
+
+    }, 100)
+</script>
+
+
+</body>
+
+</html>

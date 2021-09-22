@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态创建表格和删除操作</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+        }
+        
+        table {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            vertical-align: middle;
+            height: 30px;
+        }
+
+        table thead {
+            background: #aaa;
+        }
+        table tbody {
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing='0' border="1">
+        <thead>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>武魂</th>
+            <th>称号</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+<script>
+    let datas = [{
+        name: '唐三',
+        sex: '男',
+        type: '蓝银草',
+        bigName: '千手修罗'
+
+    }, {
+        name: '小舞',
+        sex: '女',
+        type: '兔',
+        bigName: '柔骨媚兔'
+
+    }, {
+        name: '戴沐白',
+        sex: '男',
+        type: '白虎',
+        bigName: '邪眸白虎'
+
+    }, {
+        name: '奥斯卡',
+        sex: '男',
+        type: '香肠',
+        bigName: '食神（忘了）'
+
+    },
+    {
+        name: '奥斯卡',
+        sex: '男',
+        type: '香肠',
+        bigName: '食神（忘了）'
+
+    },
+    {
+        name: '奥斯卡',
+        sex: '男',
+        type: '香肠',
+        bigName: '食神（忘了）'
+
+    },]
+    let tbody = document.querySelector('tbody');
+    for (let i = 0; i < datas.length; i++) {
+        //创建行tr
+        let tr = document.createElement('tr');
+        //添加行
+        tbody.appendChild(tr);
+        // 给行循环创单元格并添加值
+        for (let k in datas[i]) {
+            let td = document.createElement('td');
+            td.innerHTML = datas[i][k];
+            tr.appendChild(td);
+        }
+        //给每行创建删除链接
+        let td = document.createElement('td');
+        td.innerHTML = '<a href="javaScript:;">删除';
+        tr.appendChild(td);    
+    }
+    //给删除链接注册事件
+    let as = document.querySelector('table').querySelectorAll('a');
+    for (let i = 0; i<as.length;i++){
+        as[i].onclick=function(){
+            tbody.removeChild(this.parentNode.parentNode)
+        }    }
+
+</script>
+
+</html>

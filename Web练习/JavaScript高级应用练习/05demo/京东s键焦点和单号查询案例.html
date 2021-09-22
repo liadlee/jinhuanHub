@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东s键焦点和单号放大事件</title>
+    <style>
+        .bigger {
+            background: skyblue;
+            font-size: 18px;
+            font-weight: 600;
+            width: 200px;
+        }
+
+        .mymouse {
+            width: 50px;
+            position: absolute;
+
+        }
+
+        * {
+            /* cursor: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" id="jd_ipt" placeholder="请输入单号">
+        <div class="bigger"></div>
+    </div>
+    <img class="mymouse" src="./mouse.gif" alt="gif图片">
+
+</body>
+<script>
+    //s键获取焦点
+    let input = document.querySelector("#jd_ipt");
+    document.addEventListener('keyup', getFocus);
+    function getFocus(e) {
+        if (e.keyCode == 83) {
+            input.focus()
+        }
+    }
+    //内容放大效果
+    let bigger = document.querySelector('.bigger');
+    input.addEventListener('keyup', function (event) {
+        if (input.value == null) {
+            bigger.style.display = "none";
+        } else {
+            bigger.style.display = "block";
+            bigger.innerText = this.value;
+        }
+    })
+    //失去焦点时不显示
+    input.addEventListener('blur', function () {
+        bigger.style.display = "none";
+    })
+    //重新获取焦点时判断是否显示
+    input.addEventListener('focus', function () {
+        bigger.style.display = "block"
+    })
+
+    //鼠标移动事件
+    /*  1）需要绝对定位跳出当前层级
+        2）mousemove事件绑定在document上
+        3）获取相对于页面文档的坐标 e.pageX e.pageY
+        4）js移动坐标需要加上px单位
+    */
+    let img = document.querySelector('.mymouse')
+    console.log(img);
+    document.addEventListener('mousemove', function (e) {
+        console.log(e.pageY - 25 + "px");
+        img.style.top = e.pageY - 25 + 'px';
+        img.style.left = e.pageX - 25 + 'px';
+
+    })
+
+</script>
+
+</html>

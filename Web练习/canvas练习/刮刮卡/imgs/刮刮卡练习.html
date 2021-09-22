@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刮刮卡实例练习</title>
+</head>
+<style>
+    .warp {
+        width: 690px;
+        margin: 0 auto;
+    }
+
+    #test {
+        background-image: url(../imgs/01zly.jpeg);
+    }
+</style>
+
+<body>
+    <div class="warp">
+        <canvas width="690" height="1035" id="test">
+
+        </canvas>
+    </div>
+</body>
+<script>
+    /** @type {HTMLCanvasElement} */
+
+    var canvas = document.getElementById("test");
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+        var img = new Image();
+        img.src = "封面.jpeg"
+        img.onload = function () {
+            draw();
+        }
+    }
+    function draw() {
+        ctx.drawImage(img,0,0, canvas.width,canvas.height)
+
+    }
+    ctx.save();
+
+    ctx.beginPath();
+
+    ctx.restore();
+</script>
+
+</html>

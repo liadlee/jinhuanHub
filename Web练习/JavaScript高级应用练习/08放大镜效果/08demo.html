@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜效果练习</title>
+    <script src="./o8.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .main{
+        position: relative;
+    }
+    
+    .box {
+        width: 450px;
+        margin: 0 auto;
+        position: absolute;
+        left: 0px;
+        top:0px
+    }
+
+    .smallImg {
+        width: 450px;
+        height: 450px;
+        border: 1px solid skyblue;
+
+    }
+
+    .bigImg {
+        position: absolute;
+        z-index: 3;
+        background: skyblue;
+        top: 0px;
+        left: 450px;
+        width: 400px;
+        height: 400px;
+        overflow: hidden;
+        display: none;
+
+    }
+    .bigImg img{
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        left: 0px;
+        top:0px;
+    }
+    .mask {
+        width: 200px;
+        height: 200px;
+        opacity: .3;
+        background-color: tan;
+        position: absolute;
+        top: 0px;
+        left: 100px;
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <!-- 透明层 -->
+            <div class="mask"></div>
+            <!-- 左侧图片缩略  -->
+            <img class="smallImg" src="./d6e170fb27612ef8.jpg" alt="手机展示图片" srcset="">
+
+        </div>
+
+        <div class="bigImg">
+            <img src="./d6e170fb27612ef8 (1).jpg" alt="">
+        </div>
+    </div>
+</body>
+
+
+</html>

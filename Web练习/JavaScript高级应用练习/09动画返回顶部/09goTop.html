@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goTop</title>
+    <style>
+        .fir {
+            width: 100%;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        .sec {
+            width: 100%;
+            height: 300px;
+            background-color: salmon;
+        }
+
+        .main {
+            width: 100%;
+            height: 600px;
+            background-color: seashell;
+            position: relative;
+        }
+
+        .right {
+            
+            width: 80px;
+            position: absolute;
+            
+            top: 10px;
+            right: 0px;
+            background-color: pink;
+            z-index: 2;
+        }
+
+        .right ul li {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+
+        .bot {
+            width: 100%;
+            height: 200px;
+            background-color: #dec240;
+        }
+
+        #gotop {
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fir"></div>
+    <div class="sec"></div>
+    <div class="main">
+        <div class="right">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li id ="gotop">go</li>
+            </ul>
+        </div>
+    </div>
+    <div class="bot"></div>
+</body>
+<script>
+    //页面滚动事件
+    let right = document.querySelector('.right');
+    let fir = document.querySelector('.fir');
+    let sec = document.querySelector('.sec');
+    let li = document.querySelector('#gotop')
+    let changelen = fir.offsetHeight + sec.offsetHeight;
+    document.addEventListener('scroll', function (e) {
+        if (window.pageYOffset >= changelen) {
+            li.style.display = 'block';
+            right.style.position = 'fixed'
+        }else{
+            li.style.display = 'none';
+            right.style.position = 'absolute';
+        }
+    })
+    li.addEventListener('click',function () {
+        console.log('letsgo');
+        console.log(window.pageYOffset );
+       // window.scroll(0,0)瞬移式返回  window.scroll(x,y)滑动页面到指定位置
+        // 带有缓动效果的返回
+        animate(window,0)
+    })
+    function animate(obj,target,callback){
+        let step = 0;
+        clearInterval(obj.timer); //保证只有一个定时器，防止多次点击加快
+        obj.timer =setInterval(function(){
+            step = (target-window.pageYOffset)/10;
+            step > 0?Math.ceil(step):Math.floor(step); //保证步长为整数数，取整不同是因为像绝对值大数方向取整，防止倒退
+            if(window.pageYOffset == target){
+                clearInterval(obj.timer);
+                callback&&callback(); //短路运算，当第一个为假时直接停止
+            }
+            window.scroll(0,window.pageYOffset +step) //缓动window.pageYOffset初始:900 :window.pageYOffset +step:800 750 720...
+        },15)
+    }
+</script>
+
+</html>
